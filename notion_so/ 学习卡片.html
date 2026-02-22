@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习卡片 - 液态玻璃效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .glass-card-20260222 {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            max-width: 500px;
+            width: 100%;
+            padding: 35px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card-20260222:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+        }
+
+        .glass-card-title-20260222 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card-description-20260222 {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .glass-card-link-20260222 {
+            display: inline-block;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card-link-20260222:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
+        }
+
+        .glass-progress-container-20260222 {
+            margin-top: 25px;
+        }
+
+        .glass-progress-label-20260222 {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .glass-progress-bar-wrapper-20260222 {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            overflow: visible;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-progress-bar-20260222 {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.8) 100%);
+            border-radius: 10px;
+            transition: width 0.1s ease;
+            position: relative;
+        }
+
+        .glass-progress-slider-20260222 {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: grab;
+            transition: transform 0.2s ease;
+        }
+
+        .glass-progress-slider-20260222:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .glass-progress-slider-20260222:active {
+            cursor: grabbing;
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .glass-badge-20260222 {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-progress-value-20260222 {
+            margin-top: 10px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card-20260222">
+        <h2 class="glass-card-title-20260222">AI短剧制作学习</h2>
+        <p class="glass-card-description-20260222">
+            学习如何使用AI工具制作短剧内容，包括脚本生成、角色设计、场景制作等核心技能。
+        </p>
+        <a href="https://www.bilibili.com/video/BV11NHJzTEbE" class="glass-card-link-20260222" target="_blank">
+            📺 观看教程视频
+        </a>
+        <div class="glass-progress-container-20260222">
+            <div class="glass-progress-label-20260222">
+                <span>学习进度</span>
+                <span class="glass-badge-20260222">进行中</span>
+            </div>
+            <div class="glass-progress-bar-wrapper-20260222" id="progressWrapper">
+                <div class="glass-progress-bar-20260222" id="progressBar" style="width: 35%;">
+                    <div class="glass-progress-slider-20260222" id="progressSlider"></div>
+                </div>
+            </div>
+            <div class="glass-progress-value-20260222" id="progressValue">
+                35% 完成
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const progressWrapper = document.getElementById('progressWrapper');
+        const progressBar = document.getElementById('progressBar');
+        const progressSlider = document.getElementById('progressSlider');
+        const progressValue = document.getElementById('progressValue');
+
+        let isDragging = false;
+
+        function updateProgress(clientX) {
+            const rect = progressWrapper.getBoundingClientRect();
+            let percent = ((clientX - rect.left) / rect.width) * 100;
+            percent = Math.max(0, Math.min(100, percent));
+            percent = Math.round(percent);
+            
+            progressBar.style.width = percent + '%';
+            progressValue.textContent = percent + '% 完成';
+        }
+
+        progressSlider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            e.preventDefault();
+        });
+
+        progressWrapper.addEventListener('click', (e) => {
+            if (!isDragging) {
+                updateProgress(e.clientX);
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                updateProgress(e.clientX);
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // 触摸设备支持
+        progressSlider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            e.preventDefault();
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                updateProgress(e.touches[0].clientX);
+            }
+        });
+
+        document.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>
